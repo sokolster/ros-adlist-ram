@@ -9,9 +9,7 @@
 }
 
 # Flush current DNS cache and adlists
-:local maxUptime 10m
-:local uptime [/system resource get uptime]
-:if ($uptime > $maxUptime) do={
+:if ([/system resource get uptime] > 10m) do={
     :log info "Uptime is more than 1 minute. Flushing DNS cache."
     /ip/dns/cache/flush
 }
