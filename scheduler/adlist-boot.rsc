@@ -1,4 +1,4 @@
-:local scriptName "update-adlist"
+:local scriptName "adlist-update"
 :local sdelay 20
 
 :log info "Startup: Waiting $sdelay seconds..."
