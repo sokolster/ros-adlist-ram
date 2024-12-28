@@ -1,4 +1,4 @@
-:local scriptName "update-adlist"
+:local scriptName "adlist-update"
 :local uptimeThreshold 12h
 
 :if ([/system resource get uptime] > $uptimeThreshold) do={
