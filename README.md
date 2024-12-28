@@ -35,9 +35,9 @@ Download the scripts from GitHub to your MikroTik router using `/tool fetch`.
 ### 2. Add Scripts to the Router
    
 ```shell
-/system script add name="update-adlist" source=[/file get adlist-update.rsc contents]
-/system scheduler add name="adlist-3am" start-time=03:00 interval=1d on-event="/import file-name=adlist-3am.rsc"
-/system scheduler add name="adlist-boot" start-time=startup on-event="/import file-name=adlist-boot.rsc"
+/system script add name=adlist-update policy=ftp,read,write,test source=[/file get adlist-update.rsc contents]
+/system scheduler add name="adlist-3am"policy=ftp,read,write,test start-time=03:00 interval=2d on-event="/import file-name=adlist-3am.rsc"
+/system scheduler add name="adlist-boot" policy=ftp,read,write,test start-time=startup on-event="/import file-name=adlist-boot.rsc"
 
 /file remove [find name~"adlist-.*\\.rsc"]
 ```
