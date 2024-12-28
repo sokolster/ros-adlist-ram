@@ -43,6 +43,7 @@ Download the scripts from GitHub to your MikroTik router using `/tool fetch`.
 ```
 
 ###3. Verify Setup
+reboot and check
 
 ```shell
 /ip/dns/print
@@ -52,6 +53,7 @@ Download the scripts from GitHub to your MikroTik router using `/tool fetch`.
 
 - This setup works on **hAP ac²** routers with 128mb ram.
 - Setting `cacheSize` to `32768` allows the use of up to **197k DNS entries**.
+- feature was added in **RouterOS 7.15+**
 
 ## Thanks To
 - **[hagezi/dns-blocklists](https://github.com/hagezi/dns-blocklists)**  
