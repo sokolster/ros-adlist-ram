@@ -24,7 +24,7 @@ This guide helps you manage adlists in RAM on MikroTik routers with limited memo
 ## Installation
 
 ### 1. Upload Scripts to the Router
-Download the scripts from GitHub to your MikroTik router using `/tool fetch`.
+Download the scripts from GitHub to your MikroTik router using `/tool fetch`, or manual with Files
 
 ```shell
 /tool fetch url="https://raw.githubusercontent.com/sokolster/ros-adlist-ram/refs/heads/main/scripts/adlist-update.rsc"
@@ -36,8 +36,8 @@ Download the scripts from GitHub to your MikroTik router using `/tool fetch`.
    
 ```shell
 /system script add name=adlist-update policy=ftp,read,write,test source=[/file get adlist-update.rsc contents]
-/system scheduler add name="adlist-boot" policy=ftp,read,write,test start-time=startup source=[/file get adlist-boot.rsc contents]
-/system scheduler add name="adlist-3am"policy=ftp,read,write,test start-time=03:00 interval=2d source=[/file get adlist-3am.rsc contents]
+/system scheduler add name="adlist-boot" policy=ftp,read,write,test start-time=startup on-event=[/file get adlist-boot.rsc contents]
+/system scheduler add name="adlist-3am" policy=ftp,read,write,test start-time=03:00 interval=2d on-event=[/file get adlist-3am.rsc contents]
 
 /file remove [find name~"adlist-.*\\.rsc"]
 ```
@@ -50,11 +50,14 @@ reboot and check
 /ip/dns/print
 /ip/dns/adlist/print
 ```
+
 ## Notes
 
 - This setup works on **hAP ac²** routers with 128mb ram.
 - Setting `cacheSize` to `32768` allows the use of up to **197k DNS entries**.
 - feature was added in **RouterOS 7.15+**
+
+**Warning:** Use at your own risk, only if you know what you are doing.
 
 ## Thanks To
 - **[hagezi/dns-blocklists](https://github.com/hagezi/dns-blocklists)**  
