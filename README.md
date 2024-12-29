@@ -58,7 +58,7 @@ reboot and check
 
 ## Notes
 - This setup works on **hAP ac²** routers with 128mb ram.
-- Setting `cacheSize` to `32768` allows the use of up to **197k DNS entries**.
+- Setting `cacheSize` to `32768` allows the use of up to **278k DNS entries**.
 - feature was added in **RouterOS 7.15+**
 
 **Warning:** Use at your own risk, only if you know what you are doing.
