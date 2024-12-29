@@ -25,7 +25,6 @@ This guide helps you manage adlists in RAM on MikroTik routers with limited memo
 
 ### 1. Upload Scripts to the Router
 Download the scripts from GitHub to your MikroTik router using `/tool fetch`, or manual to RAM with Files.
-
 ```shell
 /tool fetch url="https://raw.githubusercontent.com/sokolster/ros-adlist-ram/refs/heads/main/scripts/adlist-update.rsc"
 /tool fetch url="https://raw.githubusercontent.com/sokolster/ros-adlist-ram/refs/heads/main/scheduler/adlist-3am.rsc"
@@ -33,7 +32,6 @@ Download the scripts from GitHub to your MikroTik router using `/tool fetch`, or
 ```
 
 ### 2. Add Scripts to the Router
-   
 ```shell
 /system script add name="adlist-update" policy=ftp,read,write,test source=[/file get adlist-update.rsc contents]
 /system scheduler add name="adlist-boot" policy=ftp,read,write,test start-time=startup on-event=[/file get adlist-boot.rsc contents]
@@ -45,14 +43,18 @@ Download the scripts from GitHub to your MikroTik router using `/tool fetch`, or
 ###3. Verify Setup
 
 reboot and check
-
 ```shell
 /ip/dns/print
 /ip/dns/adlist/print
 ```
 
-## Notes
+## Whitelist for Adlist
+```shell
+/ip/dns/static/add name=bar.test type=FWD
+```
+---
 
+## Notes
 - This setup works on **hAP ac²** routers with 128mb ram.
 - Setting `cacheSize` to `32768` allows the use of up to **197k DNS entries**.
 - feature was added in **RouterOS 7.15+**
@@ -65,3 +67,6 @@ reboot and check
 
 - **[MikroTik Forum - Thread on Adlists](https://forum.mikrotik.com/viewtopic.php?t=209239)**  
   For contributing to the community discussion on using adlists on MikroTik routers.
+
+- **[MikroTik Wiki](https://help.mikrotik.com/docs/spaces/ROS/pages/37748767/DNS#DNS-WhitelistforAdlist)**  
+
