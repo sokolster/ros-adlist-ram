@@ -68,5 +68,5 @@ reboot and check
 - **[MikroTik Forum - Thread on Adlists](https://forum.mikrotik.com/viewtopic.php?t=209239)**  
   For contributing to the community discussion on using adlists on MikroTik routers.
 
-- **[MikroTik Wiki](https://help.mikrotik.com/docs/spaces/ROS/pages/37748767/DNS#DNS-WhitelistforAdlist)**  
+- **[MikroTik Wiki - DNS Page](https://help.mikrotik.com/docs/spaces/ROS/pages/37748767/DNS#DNS-Adlist)**  
 
