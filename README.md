@@ -26,9 +26,9 @@ This guide helps you manage adlists in RAM on MikroTik routers with limited memo
 ### 1. Upload Scripts to the Router
 Download the scripts from GitHub to your MikroTik router using `/tool fetch`, or manual to RAM with Files.
 ```shell
-/tool fetch url="https://raw.githubusercontent.com/sokolster/ros-adlist-ram/refs/heads/main/scripts/adlist-update.rsc"
-/tool fetch url="https://raw.githubusercontent.com/sokolster/ros-adlist-ram/refs/heads/main/scheduler/adlist-3am.rsc"
-/tool fetch url="https://raw.githubusercontent.com/sokolster/ros-adlist-ram/refs/heads/main/scheduler/adlist-boot.rsc"
+/tool fetch url="https://raw.githubusercontent.com/sokolster/ros-adlist-ram/main/scripts/adlist-update.rsc"
+/tool fetch url="https://raw.githubusercontent.com/sokolster/ros-adlist-ram/main/scheduler/adlist-3am.rsc"
+/tool fetch url="https://raw.githubusercontent.com/sokolster/ros-adlist-ram/main/scheduler/adlist-boot.rsc"
 ```
 
 ### 2. Add Scripts to the Router
