@@ -26,16 +26,18 @@ This guide helps you manage adlists in RAM on MikroTik routers with limited memo
 ### 1. Upload Scripts to the Router
 Download the scripts from GitHub to your MikroTik router using `/tool fetch`, or manual to RAM with Files.
 ```shell
-/tool fetch url="https://raw.githubusercontent.com/sokolster/ros-adlist-ram/main/scripts/adlist-update.rsc"
-/tool fetch url="https://raw.githubusercontent.com/sokolster/ros-adlist-ram/main/scheduler/adlist-3am.rsc"
-/tool fetch url="https://raw.githubusercontent.com/sokolster/ros-adlist-ram/main/scheduler/adlist-boot.rsc"
+:do { 
+	/tool fetch url="https://raw.githubusercontent.com/sokolster/ros-adlist-ram/main/scripts/adlist-update.rsc"
+	/tool fetch url="https://raw.githubusercontent.com/sokolster/ros-adlist-ram/main/scheduler/adlist-3am.rsc"
+	/tool fetch url="https://raw.githubusercontent.com/sokolster/ros-adlist-ram/main/scheduler/adlist-boot.rsc"
+}
 ```
 
 ### 2. Add Scripts to the Router
 ```shell
-/system script add name="adlist-update" policy=ftp,read,write,test source=[/file get adlist-update.rsc contents]
-/system scheduler add name="adlist-boot" policy=ftp,read,write,test start-time=startup on-event=[/file get adlist-boot.rsc contents]
-/system scheduler add name="adlist-3am" policy=ftp,read,write,test start-time=03:00 interval=2d on-event=[/file get adlist-3am.rsc contents]
+/system script add name="adlist-update" policy=ftp,read,write,test source=[/file get adlist-update.rsc contents];
+/system scheduler add name="adlist-boot" policy=ftp,read,write,test start-time=startup on-event=[/file get adlist-boot.rsc contents];
+/system scheduler add name="adlist-3am" policy=ftp,read,write,test start-time=03:00 interval=2d on-event=[/file get adlist-3am.rsc contents];
 
 /file remove [find name~"adlist-.*\\.rsc"]
 ```
